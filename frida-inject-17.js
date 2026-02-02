@@ -8,12 +8,10 @@ Java.perform(function () {
     // In Frida 17+, Java.scheduleOnMainThread() returns a Promise
     Java.scheduleOnMainThread(function() {
         var Toast = Java.use("android.widget.Toast");
-        var Gravity = Java.use("android.view.Gravity");
-        var instance = Java.use("android.app.ActivityThread").currentApplication().getApplicationContext();
         var textStr = Java.use("java.lang.String").$new("THIS APP IS HOOKED => RUNTIME MALWARE DEMO WAS INJECTED");
         
         for (let step = 0; step < 6; step++) {
-            Toast.makeText(instance, textStr, 1).show();
+            Toast.makeText(context, textStr, 1).show();
         }
     });
 });
